@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khelpati - नेपाली खेलकुद समाचार</title>
+    <!-- 
+    NOTE: Ad images are referenced from the original site. For production:
+    - /images/ktm-city.gif -> KTM City ad
+    - /images/T10.gif -> Bhat Bhateni ad
+    - /images/lining.gif -> Li Ning ad
+    - /images/pulsar.gif -> Bajaj Pulsar ad
+    - /images/classictech.gif -> Classic Tech ad
+    - /images/mustang.gif -> Mustang Rice ad
+    
+    These should be copied from https://www.khelpati.com/images/
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #E84545;
+            --primary-dark: #C73636;
+            --secondary: #1A1A2E;
+            --text-dark: #16213E;
+            --text-light: #5A5A5A;
+            --bg-light: #FAFAFA;
+            --bg-white: #FFFFFF;
+            --border: #E8E8E8;
+            --accent: #FFA500;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .english-text {
+            font-family: 'Archivo', sans-serif;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-top {
+            background: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .header-top-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date {
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .header-main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        nav {
+            flex: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .search-btn {
+            background: var(--bg-light);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-dark);
+        }
+
+        .search-btn:hover {
+            background: var(--border);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 0 20px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hero-main {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .hero-main:hover {
+            transform: translateY(-4px);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 40px;
+            color: white;
+        }
+
+        .hero-category {
+            display: inline-block;
+            background: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .hero-meta {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .hero-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .sidebar-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 240px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .sidebar-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .sidebar-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar-card-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+
+        .sidebar-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Ad Banner - Seamless Integration */
+        .ad-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .ad-content {
+            z-index: 1;
+        }
+
+        .ad-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .ad-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .ad-description {
+            font-size: 15px;
+            opacity: 0.95;
+            margin-bottom: 16px;
+        }
+
+        .ad-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .ad-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .ad-image {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            z-index: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        /* Ad Image Fallback */
+        .ad-image:not([src]) {
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-image:not([src])::after {
+            content: 'AD';
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1280px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .view-all:hover {
+            color: var(--primary-dark);
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .news-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .news-card-content {
+            padding: 20px;
+        }
+
+        .news-card-category {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .news-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .news-card-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .news-card-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Compact News List */
+        .compact-news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .compact-news-item {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .compact-news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .compact-news-item:hover {
+            transform: translateX(4px);
+        }
+
+        .compact-news-image {
+            width: 100px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .compact-news-content {
+            flex: 1;
+        }
+
+        .compact-news-category {
+            font-size: 11px;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .compact-news-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .compact-news-time {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .sidebar-widget {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        /* Sidebar Ad - Native Style */
+        .sidebar-ad {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 24px;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar-ad-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-ad-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-ad-description {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-ad-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .sidebar-ad-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Trending Topics */
+        .trending-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .trending-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .trending-item:hover {
+            background: var(--bg-light);
+        }
+
+        .trending-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .trending-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Categories Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .category-card {
+            background: var(--bg-light);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .category-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .category-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .category-count {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            margin-top: 60px;
+            padding: 48px 20px 24px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-main {
+                height: 400px;
+            }
+
+            .hero-sidebar {
+                grid-template-columns: repeat(2, 1fr);
+                flex-direction: row;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .hero-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .ad-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ad-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="date">शनिबार, ०२ फाल्गुण २०८२</div>
+                <div class="social-links">
+                    <a href="#" title="Facebook">फेसबुक</a>
+                    <a href="#" title="Twitter">ट्विटर</a>
+                    <a href="#" title="Instagram">इन्स्टाग्राम</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <a href="/" class="logo">
+                <div class="logo-icon">ख</div>
+                <span>Khelpati</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/" class="active">गृह पृष्ठ</a></li>
+                    <li><a href="/football">फुटबल</a></li>
+                    <li><a href="/cricket">क्रिकेट</a></li>
+                    <li><a href="/volleyball">भलिबल</a></li>
+                    <li><a href="/athletics">एथलेटिक्स</a></li>
+                    <li><a href="/martial-arts">मार्शल आर्ट</a></li>
+                </ul>
+            </nav>
+            <button class="search-btn">🔍</button>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section animate-in">
+        <div class="hero-grid">
+            <div class="hero-main">
+                <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/aaja%20ko%20khel-1771045581378.jpg" alt="Hero news" class="hero-image">
+                <div class="hero-content">
+                    <span class="hero-category">फुटबल</span>
+                    <h1 class="hero-title">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</h1>
+                    <div class="hero-meta">२ घण्टा अघि • राजु घिसिङ</div>
+                </div>
+            </div>
+            <div class="hero-sidebar">
+                <div class="sidebar-card">
+                    <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/8d0d4ba1-2ccc-4fc2-99f3-dd9a0e2d87fa%20(1)-1770898265562.jpg" alt="News 2">
+                    <div class="sidebar-card-content">
+                        <div class="sidebar-card-category">क्रिकेट</div>
+                        <h3 class="sidebar-card-title">इटालीसँग नेपालको लज्जास्पद हार</h3>
+                    </div>
+                </div>
+                <div class="sidebar-card">
+                    <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/usha-1770746512978.jpg" alt="News 3">
+                    <div class="sidebar-card-content">
+                        <div class="sidebar-card-category">भलिबल</div>
+                        <h3 class="sidebar-card-title">काभा वुमन्स लिगमा तेस्रो भयो पुलिस</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Ad Banner -->
+        <div class="ad-banner animate-in" style="background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);">
+            <div class="ad-content">
+                <div class="ad-label">प्रायोजित</div>
+                <div class="ad-title english-text">KTM City - Your Sports Hub</div>
+                <div class="ad-description">काठमाडौंको सबैभन्दा ठूलो खेलकुद सामग्री तथा फिटनेस केन्द्र - सबै प्रकारका खेलकुद सामग्री उपलब्ध</div>
+                <button class="ad-btn english-text" onclick="window.open('https://linktr.ee/ktmcty', '_blank')">Visit Now</button>
+            </div>
+            <div style="width: 200px; height: 200px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 64px; z-index: 1;">
+                🏋️
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-section">
+            <!-- Latest News Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">ताजा समाचार</h2>
+                    <a href="/latest" class="view-all">सबै हेर्नुहोस् →</a>
+                </div>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/chelsea-1771041271734.jpg" alt="News" class="news-card-image">
+                        <div class="news-card-content">
+                            <span class="news-card-category">फुटबल</span>
+                            <h3 class="news-card-title">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</h3>
+                            <p class="news-card-excerpt">इंग्लिश प्रिमियर लिगमा भएको खेलमा चेल्सीले घरेलु मैदानमा सहज जित निकालेको छ।</p>
+                            <div class="news-card-meta">
+                                <span>३ घण्टा अघि</span>
+                                <span>•</span>
+                                <span>५ मिनेट पढाइ</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/634020698_1370686005087776_3327383083382356230_n-1770962788454.jpg" alt="Cricket" class="news-card-image">
+                        <div class="news-card-content">
+                            <span class="news-card-category">क्रिकेट</span>
+                            <h3 class="news-card-title">नेपाललाई पहिलो खेलमै पराजित</h3>
+                            <p class="news-card-excerpt">आईसीसी विश्वकप लिग २ अन्तर्गत भएको खेलमा नेपाल पराजित भएको छ।</p>
+                            <div class="news-card-meta">
+                                <span>५ घण्टा अघि</span>
+                                <span>•</span>
+                                <span>४ मिनेट पढाइ</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/nkl-1771045456213.jpg" alt="NKL" class="news-card-image">
+                        <div class="news-card-content">
+                            <span class="news-card-category">अन्य</span>
+                            <h3 class="news-card-title">एनकेएल ड्राफ्टमा विभागीय टिमका ३५ खेलाडी</h3>
+                            <p class="news-card-excerpt">नेपाल खबड्डी लिगको ड्राफ्टमा विभागीय टिमका खेलाडीहरू छनोट भएका छन्।</p>
+                            <div class="news-card-meta">
+                                <span>१ दिन अघि</span>
+                                <span>•</span>
+                                <span>३ मिनेट पढाइ</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Cricket Section with Real Images -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">क्रिकेट</h2>
+                    <a href="/cricket" class="view-all">सबै हेर्नुहोस् →</a>
+                </div>
+                <div class="compact-news-list">
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/riyan-parag-2026-02-13-11-14-11-1770966111270.jpg" alt="Cricket" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">क्रिकेट</div>
+                            <h4 class="compact-news-title">पराग अब राजस्थानको कप्तान</h4>
+                            <div class="compact-news-time">४ घण्टा अघि</div>
+                        </div>
+                    </div>
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/DSC05601-1770907537699.JPG" alt="Cricket" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">क्रिकेट</div>
+                            <h4 class="compact-news-title">कठिन जित निकाल्दै मच्छिन्द्र सेमिफाइनलमा</h4>
+                            <div class="compact-news-time">७ घण्टा अघि</div>
+                        </div>
+                    </div>
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/627721699_1219915236958395_6329911764130323392_n-1770880709708.jpg" alt="Cricket" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">विशेष</div>
+                            <h4 class="compact-news-title">'हार्डकोर अस्ट्रेलियाको फ्यान' कुशल !</h4>
+                            <div class="compact-news-time">१२ घण्टा अघि</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Native Ad in Content -->
+            <div class="ad-banner" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 90%);">
+                <div class="ad-content">
+                    <div class="ad-label">प्रायोजित</div>
+                    <div class="ad-title english-text">Bhat Bhateni Supermarket</div>
+                    <div class="ad-description">खेलकुद सामग्री, फिटनेस उपकरण, खेलकुद जुत्ता तथा कपडामा विशेष छुट - अहिले नै खरिद गर्नुहोस्</div>
+                    <button class="ad-btn english-text" onclick="window.open('https://www.bbhco.com.np/', '_blank')">Shop Now</button>
+                </div>
+                <div style="width: 200px; height: 200px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 64px; z-index: 1;">
+                    🛒
+                </div>
+            </div>
+
+            <!-- Football Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">फुटबल</h2>
+                    <a href="/football" class="view-all">सबै हेर्नुहोस् →</a>
+                </div>
+                <div class="compact-news-list">
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/anfa%20league-1770990608455.jpg" alt="Football news" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">फुटबल</div>
+                            <h4 class="compact-news-title">एनआरटीले गाईघाट एफसीलाई हरायो</h4>
+                            <div class="compact-news-time">६ घण्टा अघि</div>
+                        </div>
+                    </div>
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/friends-1770988452973.jpg" alt="Football news" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">फुटबल</div>
+                            <h4 class="compact-news-title">केबेको ह्याट्रिक, प्लानिङले फ्रेन्ड्सलाई हरायो</h4>
+                            <div class="compact-news-time">८ घण्टा अघि</div>
+                        </div>
+                    </div>
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/jhapa%20goldcup-1770986599045.JPG" alt="Football news" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">फुटबल</div>
+                            <h4 class="compact-news-title">झापा ११ लाई हराउँदै एपीएफ फाइनलमा</h4>
+                            <div class="compact-news-time">१० घण्टा अघि</div>
+                        </div>
+                    </div>
+                    <div class="compact-news-item">
+                        <img src="https://s3.ap-south-1.amazonaws.com/cdn.khelpati.com/uploads/633658256_1216958517263298_8683658637948286438_n-1770966685576.jpg" alt="Football news" class="compact-news-image">
+                        <div class="compact-news-content">
+                            <div class="compact-news-category">फुटबल</div>
+                            <h4 class="compact-news-title">'सी' डिभिजनका ९ वटा क्लबले पाए मताधिकार</h4>
+                            <div class="compact-news-time">१ दिन अघि</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Trending Topics -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">ट्रेन्डिङ</h3>
+                <div class="trending-list">
+                    <div class="trending-item">
+                        <div class="trending-number">1</div>
+                        <div class="trending-text">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-number">2</div>
+                        <div class="trending-text">एनकेएल ड्राफ्टमा विभागीय टिमका ३५ खेलाडी</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-number">3</div>
+                        <div class="trending-text">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-number">4</div>
+                        <div class="trending-text">राष्ट्रिय हक्की प्रतियोगिता सोमबारदेखि</div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-number">5</div>
+                        <div class="trending-text">नेपाललाई पहिलो खेलमै पराजित</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Ad -->
+            <div class="sidebar-ad" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div style="font-size: 48px; margin-bottom: 12px;">👟</div>
+                <div class="sidebar-ad-label">प्रायोजित</div>
+                <h3 class="sidebar-ad-title english-text">Li Ning Sports</h3>
+                <p class="sidebar-ad-description">प्रिमियम खेलकुद जुत्ता तथा कपडामा ५०% सम्म छुट</p>
+                <button class="sidebar-ad-btn english-text" onclick="window.open('https://www.facebook.com/LiNing.Official', '_blank')">Shop Now</button>
+            </div>
+
+            <!-- Additional Inline Ad -->
+            <div class="sidebar-ad" style="background: linear-gradient(135deg, #FFA500 0%, #FF6347 100%);">
+                <div style="font-size: 48px; margin-bottom: 12px;">🏍️</div>
+                <div class="sidebar-ad-label">प्रायोजित</div>
+                <h3 class="sidebar-ad-title english-text">Bajaj Pulsar</h3>
+                <p class="sidebar-ad-description">नेपालको नम्बर १ स्पोर्ट्स बाइक - थप जानकारीको लागि</p>
+                <button class="sidebar-ad-btn english-text" onclick="window.open('https://www.facebook.com/hhbajaj', '_blank')">View Models</button>
+            </div>
+
+            <!-- Categories -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">श्रेणीहरू</h3>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-icon">⚽</div>
+                        <div class="category-name">फुटबल</div>
+                        <div class="category-count">२४५ समाचार</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🏏</div>
+                        <div class="category-name">क्रिकेट</div>
+                        <div class="category-count">१८९ समाचार</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🏐</div>
+                        <div class="category-name">भलिबल</div>
+                        <div class="category-count">१५६ समाचार</div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🥋</div>
+                        <div class="category-name">मार्शल आर्ट</div>
+                        <div class="category-count">९८ समाचार</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Another Sidebar Ad -->
+            <div class="sidebar-ad" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div style="font-size: 48px; margin-bottom: 12px;">📡</div>
+                <div class="sidebar-ad-label">प्रायोजित</div>
+                <h3 class="sidebar-ad-title english-text">Classic Tech</h3>
+                <p class="sidebar-ad-description">उच्च गतिको इन्टरनेट सेवा - अहिले जडान गर्नुहोस्</p>
+                <button class="sidebar-ad-btn english-text" onclick="window.open('https://www.classic.com.np/', '_blank')">Learn More</button>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Khelpati बारे</h3>
+                <p>नेपालको अग्रणी खेलकुद समाचार पोर्टल। हामी नेपाली खेलकुद जगतका सबै ताजा समाचार, विश्लेषण र जानकारी प्रदान गर्दछौं।</p>
+            </div>
+            <div class="footer-section">
+                <h3>महत्त्वपूर्ण लिंक</h3>
+                <ul class="footer-links">
+                    <li><a href="/about">हाम्रो बारे</a></li>
+                    <li><a href="/team">हाम्रो टीम</a></li>
+                    <li><a href="/contact">सम्पर्क</a></li>
+                    <li><a href="/advertise">विज्ञापन</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>खेलकुद श्रेणी</h3>
+                <ul class="footer-links">
+                    <li><a href="/football">फुटबल</a></li>
+                    <li><a href="/cricket">क्रिकेट</a></li>
+                    <li><a href="/volleyball">भलिबल</a></li>
+                    <li><a href="/athletics">एथलेटिक्स</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>सम्पर्क</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:9851085203">९८५१०८५२०३</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#95e6e0e5e5fae7e1d5fefdf0f9e5f4e1fcbbf6faf8" class="english-text"><span class="__cf_email__" data-cfemail="bdcec8cdcdd2cfc9fdd6d5d8d1cddcc9d493ded2d0">[email&#160;protected]</span></a></li>
+                    <li>त्रिपुरेश्वर, काठमाडौं</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 Khelpati. All rights reserved.</div>
+            <div class="english-text">Designed by Beeaver Tech</div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Add smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add intersection observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.news-card, .compact-news-item').forEach(el => {
+            observer.obs
