@@ -27,7 +27,7 @@
 
         body {
             font-family: 'Mukta', sans-serif;
-            background: #000;
+            background: #fff;
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
@@ -580,282 +580,298 @@
             <a href="khelpati-design-system.html">Design System</a>
         </div>
     </nav>
+    <!-- Pages Navigation Menu (Outside Device Frame) -->
+    <nav class="pages-menu">
+        <div class="pages-menu-container">
+            <span class="pages-menu-label">📄 Pages:</span>
+            <a href="index.html">Home</a>
+            <a href="khelpati-redesign.html">Redesign</a>
+            <a href="khelpati-article.html">Article</a>
+            <a href="khelpati-homepage.html">Homepage</a>
+            <a href="khelpati-homepage-final.html">Homepage Final</a>
+            <a href="khelpati-mobile.html" class="active">Mobile (iPhone 14 Pro Max)</a>
+            <a href="khelpati-design-system.html">Design System</a>
+        </div>
+    </nav>
 
     <!-- iPhone 14 Pro Max Device Frame -->
     <div class="device-frame">
+        <!-- iPhone 14 Pro Max Skin Overlay -->
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1002;">
+            <!-- Speaker, Camera, Sensors -->
+            <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:120px;height:18px;background:#222;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;">
+                <div style="width:32px;height:8px;background:#444;border-radius:4px;margin-right:8px;"></div>
+                <div style="width:8px;height:8px;background:#333;border-radius:50%;margin-right:8px;"></div>
+                <div style="width:8px;height:8px;background:#333;border-radius:50%;"></div>
+            </div>
+        </div>
         <div class="device-screen">
+            <!-- All mobile content starts here -->
             <!-- Fixed Header -->
             <header class="header">
-        <div class="header-top">
-            <a href="/" class="logo">
-                <div class="logo-icon">ख</div>
-                <span>खेलपाटी</span>
-            </a>
-            <div class="header-actions">
-                <button class="icon-btn">🔍</button>
-                <button class="icon-btn">☰</button>
-            </div>
-        </div>
-        <div class="category-tabs">
-            <div class="tab active">गृह पृष्ठ</div>
-            <div class="tab">फुटबल</div>
-            <div class="tab">क्रिकेट</div>
-            <div class="tab">भलिबल</div>
-            <div class="tab">बास्केटबल</div>
-            <div class="tab">थप</div>
-        </div>
-    </header>
+                <div class="header-top">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">ख</div>
+                        <span>खेलपाटी</span>
+                    </a>
+                    <div class="header-actions">
+                        <button class="icon-btn">🔍</button>
+                        <button class="icon-btn">☰</button>
+                    </div>
+                </div>
+                <div class="category-tabs">
+                    <div class="tab active">गृह पृष्ठ</div>
+                    <div class="tab">फुटबल</div>
+                    <div class="tab">क्रिकेट</div>
+                    <div class="tab">भलिबल</div>
+                    <div class="tab">बास्केटबल</div>
+                    <div class="tab">थप</div>
+                </div>
+            </header>
 
-    <!-- Breaking News -->
-    <div class="breaking-news">
-        <span class="live-badge">🔴 LIVE</span>
-        <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-            फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै • ३० मिनेटमा खेल सुरु
+            <!-- Breaking News -->
+            <div class="breaking-news">
+                <span class="live-badge">🔴 LIVE</span>
+                <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै • ३० मिनेटमा खेल सुरु
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Hero Story -->
+                <div class="hero-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=400&fit=crop" alt="Hero" class="hero-image">
+                    <div class="hero-overlay">
+                        <span class="badge badge-football">फुटबल</span>
+                        <h2 class="hero-title">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</h2>
+                        <div class="hero-meta">
+                            <span>👤 राजु घिसिङ</span>
+                            <span>🕐 २ घण्टा अगाडि</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Stories Section -->
+                <div class="section-header">
+                    <h3 class="section-title">🔥 मुख्य समाचार</h3>
+                    <a href="#" class="view-all">सबै →</a>
+                </div>
+
+                <div class="story-scroll">
+                    <div class="small-card">
+                        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
+                        <div class="small-card-content">
+                            <span class="badge badge-cricket">क्रिकेट</span>
+                            <div class="small-card-title">पराग अब राजस्थानको कप्तान</div>
+                            <div class="card-meta">🕐 ३ घण्टा अगाडि</div>
+                        </div>
+                    </div>
+                    <div class="small-card">
+                        <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
+                        <div class="small-card-content">
+                            <span class="badge badge-volleyball">भलिबल</span>
+                            <div class="small-card-title">काभा वुमन्स लिगमा तेस्रो भयो पुलिस</div>
+                            <div class="card-meta">🕐 ५ घण्टा अगाडि</div>
+                        </div>
+                    </div>
+                    <div class="small-card">
+                        <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
+                        <div class="small-card-content">
+                            <span class="badge badge-football">फुटबल</span>
+                            <div class="small-card-title">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</div>
+                            <div class="card-meta">🕐 ६ घण्टा अगाडि</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Latest News Section -->
+                <div class="section-header">
+                    <h3 class="section-title">📰 ताजा समाचार</h3>
+                </div>
+
+                <div class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=300&fit=crop" alt="News" class="card-image">
+                    <div class="card-content">
+                        <span class="badge badge-football">फुटबल</span>
+                        <h3 class="card-title">एनआरटीले गाईघाट एफसीलाई हरायो</h3>
+                        <div class="card-meta">
+                            <span>👤 हिम बिक्रम केसी</span>
+                            <span>🕐 ८ घण्टा अगाडि</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&h=300&fit=crop" alt="News" class="card-image">
+                    <div class="card-content">
+                        <span class="badge badge-football">फुटबल</span>
+                        <h3 class="card-title">केबेको ह्याट्रिक, प्लानिङले फ्रेन्ड्सलाई हरायो</h3>
+                        <div class="card-meta">
+                            <span>👤 उज्वल तिमल्सिना</span>
+                            <span>🕐 १० घण्टा अगाडि</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Native Ad -->
+                <div class="native-ad fade-in">
+                    <span class="sponsored-label">प्रायोजित</span>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop" alt="Ad" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">एक्सट्रिम एनर्जी - खेलाडीहरूको पहिलो रोजाई</h3>
+                        <div class="card-meta">
+                            <span>नेपालको नं.१ स्पोर्ट्स ड्रिंक</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=300&fit=crop" alt="News" class="card-image">
+                    <div class="card-content">
+                        <span class="badge badge-cricket">क्रिकेट</span>
+                        <h3 class="card-title">नेपाललाई पहिलो खेलमै पराजित</h3>
+                        <div class="card-meta">
+                            <span>👤 निशान राई</span>
+                            <span>🕐 १२ घण्टा अगाडि</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Section -->
+                <div class="section-header">
+                    <h3 class="section-title">🎥 भिडियो</h3>
+                    <a href="#" class="view-all">सबै →</a>
+                </div>
+
+                <div class="story-scroll">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="play-icon">▶</div>
+                            <div class="video-duration">3:45</div>
+                        </div>
+                        <div class="video-title">मछिन्द्र vs आर्मी हाईलाइट्स</div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="play-icon">▶</div>
+                            <div class="video-duration">5:12</div>
+                        </div>
+                        <div class="video-title">कुशल भुर्तेल अन्तर्वार्ता</div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div class="play-icon">▶</div>
+                            <div class="video-duration">2:30</div>
+                        </div>
+                        <div class="video-title">नेपाल महिला टिमको तयारी</div>
+                    </div>
+                </div>
+
+                <div class="news-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=600&h=300&fit=crop" alt="News" class="card-image">
+                    <div class="card-content">
+                        <span class="badge badge-football">फुटबल</span>
+                        <h3 class="card-title">झापा ११ लाई हराउँदै एपीएफ फाइनलमा</h3>
+                        <div class="card-meta">
+                            <span>👤 लक्षमण केसी</span>
+                            <span>🕐 १४ घण्टा अगाडि</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Bottom Navigation -->
+            <nav class="bottom-nav">
+                <a href="/" class="nav-item active">
+                    <div>🏠</div>
+                    <span class="nav-label">गृह पृष्ठ</span>
+                </a>
+                <a href="/football" class="nav-item">
+                    <div>⚽</div>
+                    <span class="nav-label">फुटबल</span>
+                </a>
+                <a href="/cricket" class="nav-item">
+                    <div>🏏</div>
+                    <span class="nav-label">क्रिकेट</span>
+                </a>
+                <a href="/videos" class="nav-item">
+                    <div>🎥</div>
+                    <span class="nav-label">भिडियो</span>
+                </a>
+                <a href="/more" class="nav-item">
+                    <div>☰</div>
+                    <span class="nav-label">थप</span>
+                </a>
+            </nav>
+
+            <script>
+                // Tab switching
+                const tabs = document.querySelectorAll('.tab');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+
+                // Bottom nav active state
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => {
+                    item.addEventListener('click', function(e) {
+                        navItems.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+
+                // Smooth scroll for horizontal scrolls
+                const scrollContainers = document.querySelectorAll('.story-scroll, .category-tabs');
+                scrollContainers.forEach(container => {
+                    let isDown = false;
+                    let startX;
+                    let scrollLeft;
+
+                    container.addEventListener('touchstart', (e) => {
+                        isDown = true;
+                        startX = e.touches[0].pageX - container.offsetLeft;
+                        scrollLeft = container.scrollLeft;
+                    });
+
+                    container.addEventListener('touchend', () => {
+                        isDown = false;
+                    });
+
+                    container.addEventListener('touchmove', (e) => {
+                        if (!isDown) return;
+                        e.preventDefault();
+                        const x = e.touches[0].pageX - container.offsetLeft;
+                        const walk = (x - startX) * 2;
+                        container.scrollLeft = scrollLeft - walk;
+                    });
+                });
+
+                // Fade in animation on scroll
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.news-card, .native-ad').forEach(card => {
+                    observer.observe(card);
+                });
+            </script>
         </div>
     </div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Story -->
-        <div class="hero-card fade-in">
-            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=400&fit=crop" alt="Hero" class="hero-image">
-            <div class="hero-overlay">
-                <span class="badge badge-football">फुटबल</span>
-                <h2 class="hero-title">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</h2>
-                <div class="hero-meta">
-                    <span>👤 राजु घिसिङ</span>
-                    <span>🕐 २ घण्टा अगाडि</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Top Stories Section -->
-        <div class="section-header">
-            <h3 class="section-title">🔥 मुख्य समाचार</h3>
-            <a href="#" class="view-all">सबै →</a>
-        </div>
-
-        <div class="story-scroll">
-            <div class="small-card">
-                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
-                <div class="small-card-content">
-                    <span class="badge badge-cricket">क्रिकेट</span>
-                    <div class="small-card-title">पराग अब राजस्थानको कप्तान</div>
-                    <div class="card-meta">🕐 ३ घण्टा अगाडि</div>
-                </div>
-            </div>
-            <div class="small-card">
-                <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
-                <div class="small-card-content">
-                    <span class="badge badge-volleyball">भलिबल</span>
-                    <div class="small-card-title">काभा वुमन्स लिगमा तेस्रो भयो पुलिस</div>
-                    <div class="card-meta">🕐 ५ घण्टा अगाडि</div>
-                </div>
-            </div>
-            <div class="small-card">
-                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
-                <div class="small-card-content">
-                    <span class="badge badge-football">फुटबल</span>
-                    <div class="small-card-title">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</div>
-                    <div class="card-meta">🕐 ६ घण्टा अगाडि</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Latest News Section -->
-        <div class="section-header">
-            <h3 class="section-title">📰 ताजा समाचार</h3>
-        </div>
-
-        <div class="news-card fade-in">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=300&fit=crop" alt="News" class="card-image">
-            <div class="card-content">
-                <span class="badge badge-football">फुटबल</span>
-                <h3 class="card-title">एनआरटीले गाईघाट एफसीलाई हरायो</h3>
-                <div class="card-meta">
-                    <span>👤 हिम बिक्रम केसी</span>
-                    <span>🕐 ८ घण्टा अगाडि</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="news-card fade-in">
-            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&h=300&fit=crop" alt="News" class="card-image">
-            <div class="card-content">
-                <span class="badge badge-football">फुटबल</span>
-                <h3 class="card-title">केबेको ह्याट्रिक, प्लानिङले फ्रेन्ड्सलाई हरायो</h3>
-                <div class="card-meta">
-                    <span>👤 उज्वल तिमल्सिना</span>
-                    <span>🕐 १० घण्टा अगाडि</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Native Ad -->
-        <div class="native-ad fade-in">
-            <span class="sponsored-label">प्रायोजित</span>
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop" alt="Ad" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">एक्सट्रिम एनर्जी - खेलाडीहरूको पहिलो रोजाई</h3>
-                <div class="card-meta">
-                    <span>नेपालको नं.१ स्पोर्ट्स ड्रिंक</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="news-card fade-in">
-            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=300&fit=crop" alt="News" class="card-image">
-        <div class="device-frame">
-            <!-- iPhone 14 Pro Max Skin Overlay -->
-            <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1002;">
-                <!-- Speaker, Camera, Sensors -->
-                <div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:120px;height:18px;background:#222;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;">
-                    <div style="width:32px;height:8px;background:#444;border-radius:4px;margin-right:8px;"></div>
-                    <div style="width:8px;height:8px;background:#333;border-radius:50%;margin-right:8px;"></div>
-                    <div style="width:8px;height:8px;background:#333;border-radius:50%;"></div>
-                </div>
-            </div>
-            <div class="device-screen">
-                <!-- Fixed Header -->
-                <header class="header">
-                    <span>👤 निशान राई</span>
-                    <span>🕐 १२ घण्टा अगाडि</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Video Section -->
-        <div class="section-header">
-            <h3 class="section-title">🎥 भिडियो</h3>
-            <a href="#" class="view-all">सबै →</a>
-        </div>
-
-        <div class="story-scroll">
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="play-icon">▶</div>
-                    <div class="video-duration">3:45</div>
-                </div>
-                <div class="video-title">मछिन्द्र vs आर्मी हाईलाइट्स</div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="play-icon">▶</div>
-                    <div class="video-duration">5:12</div>
-                </div>
-                <div class="video-title">कुशल भुर्तेल अन्तर्वार्ता</div>
-            </div>
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="play-icon">▶</div>
-                    <div class="video-duration">2:30</div>
-                </div>
-                <div class="video-title">नेपाल महिला टिमको तयारी</div>
-            </div>
-        </div>
-
-        <div class="news-card fade-in">
-            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=600&h=300&fit=crop" alt="News" class="card-image">
-            <div class="card-content">
-                <span class="badge badge-football">फुटबल</span>
-                <h3 class="card-title">झापा ११ लाई हराउँदै एपीएफ फाइनलमा</h3>
-                <div class="card-meta">
-                    <span>👤 लक्षमण केसी</span>
-                    <span>🕐 १४ घण्टा अगाडि</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="/" class="nav-item active">
-            <div>🏠</div>
-            <span class="nav-label">गृह पृष्ठ</span>
-        </a>
-        <a href="/football" class="nav-item">
-            <div>⚽</div>
-            <span class="nav-label">फुटबल</span>
-        </a>
-        <a href="/cricket" class="nav-item">
-            <div>🏏</div>
-            <span class="nav-label">क्रिकेट</span>
-        </a>
-        <a href="/videos" class="nav-item">
-            <div>🎥</div>
-            <span class="nav-label">भिडियो</span>
-        </a>
-        <a href="/more" class="nav-item">
-            <div>☰</div>
-            <span class="nav-label">थप</span>
-        </a>
-    </nav>
-
-    <script>
-        // Tab switching
-        const tabs = document.querySelectorAll('.tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                tabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Bottom nav active state
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                navItems.forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Smooth scroll for horizontal scrolls
-        const scrollContainers = document.querySelectorAll('.story-scroll, .category-tabs');
-        scrollContainers.forEach(container => {
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-
-            container.addEventListener('touchstart', (e) => {
-                isDown = true;
-                startX = e.touches[0].pageX - container.offsetLeft;
-                scrollLeft = container.scrollLeft;
-            });
-
-            container.addEventListener('touchend', () => {
-                isDown = false;
-            });
-
-            container.addEventListener('touchmove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.touches[0].pageX - container.offsetLeft;
-                const walk = (x - startX) * 2;
-                container.scrollLeft = scrollLeft - walk;
-            });
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.news-card, .native-ad').forEach(card => {
-            observer.observe(card);
-        });
-    </script>
 </body>
 </html>
