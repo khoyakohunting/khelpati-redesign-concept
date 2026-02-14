@@ -7,77 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <style>
-            html, body {
-                height: 100%;
-            }
-            body {
-                min-height: 100vh;
-                height: 100vh;
-                margin: 0;
-                padding: 0;
-                background: #fff;
-            }
-            .layout-root {
-                display: flex;
-                height: 100vh;
-                min-height: 100vh;
-                width: 100vw;
-            }
-            .pages-menu-vertical {
-                width: 220px;
-                background: #1a1a1a;
-                border-right: 2px solid #DC2626;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                padding-top: 32px;
-                min-height: 100vh;
-                position: relative;
-                z-index: 100;
-            }
-            .pages-menu-container-vertical {
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                width: 100%;
-                padding: 0 16px;
-            }
-            .pages-menu-label {
-                color: #fff;
-                font-size: 13px;
-                font-weight: 600;
-                text-transform: uppercase;
-                margin-bottom: 16px;
-                letter-spacing: 0.5px;
-                opacity: 0.8;
-            }
-            .pages-menu-vertical a {
-                color: #fff;
-                text-decoration: none;
-                padding: 10px 12px;
-                font-size: 15px;
-                border-radius: 4px;
-                transition: all 0.2s;
-                white-space: nowrap;
-                margin-bottom: 2px;
-            }
-            .pages-menu-vertical a:hover {
-                background: #DC2626;
-                color: #fff;
-            }
-            .pages-menu-vertical a.active {
-                background: #DC2626;
-                font-weight: 600;
-            }
-            .main-content-root {
-                flex: 1 1 0%;
-                min-width: 0;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                background: #fff;
-            }
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -974,74 +904,9 @@
         .animate-in:nth-child(1) { animation-delay: 0.1s; }
         .animate-in:nth-child(2) { animation-delay: 0.2s; }
         .animate-in:nth-child(3) { animation-delay: 0.3s; }
-
-        /* Pages Menu */
-        .pages-menu {
-            background: #0F172A;
-            border-bottom: 2px solid #DC2626;
-            padding: 12px 0;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
-
-        .pages-menu-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            gap: 2px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .pages-menu-label {
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-right: 16px;
-            letter-spacing: 0.5px;
-            opacity: 0.8;
-        }
-
-        .pages-menu a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            font-size: 13px;
-            border-radius: 4px;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .pages-menu a:hover {
-            background: #DC2626;
-            color: white;
-        }
-
-        .pages-menu a.active {
-            background: #DC2626;
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
-        <div class="layout-root">
-            <nav class="pages-menu-vertical">
-                <div class="pages-menu-container-vertical">
-                    <span class="pages-menu-label">📄 Pages:</span>
-                    <a href="index.html">Home</a>
-                    <a href="khelpati-redesign.html">Redesign</a>
-                    <a href="khelpati-article.html">Article</a>
-                    <a href="khelpati-homepage.html">Homepage</a>
-                    <a href="khelpati-homepage-final.html" class="active">Homepage Final</a>
-                    <a href="khelpati-mobile.html">Mobile</a>
-                    <a href="khelpati-design-system.html">Design System</a>
-                </div>
-            </nav>
-            <div class="main-content-root">
-
     <!-- Header -->
     <header>
         <div class="header-top">
@@ -1265,66 +1130,22 @@
                 </section>
             </div>
 
-            <div class="device-frame">
-              <div class="device-screen">
-                <!-- Header -->
-                <header>
-                    <div class="header-top">
-                        /* Lines 1048-1057 omitted */
-                    </div>
-                    <div class="header-main">
-                        /* Lines 1059-1077 omitted */
-                    </div>
-                </header>
-
-                <!-- Main Container -->
-                <div class="container">
-                    <!-- Breaking News Ticker -->
-                    /* Lines 1083-1352 omitted */
-                </div>
-                <!-- Footer -->
-                <footer>
-                    /* Footer content here */
-                </footer>
-              </div>
-            </div>
-                                    <style>
-                                        .device-frame {
-                                            width: 430px;
-                                            height: 932px;
-                                            background: #000;
-                                            border: 12px solid #1a1a1a;
-                                            border-radius: 60px;
-                                            overflow: hidden;
-                                            box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 0 0 1px #333;
-                                            position: relative;
-                                            margin: 40px auto;
-                                            display: flex;
-                                            flex-direction: column;
-                                            align-items: center;
-                                            justify-content: center;
-                                        }
-                                        .device-screen {
-                                            width: 100%;
-                                            height: 100%;
-                                            overflow-y: auto;
-                                            background: var(--bg-light);
-                                            -webkit-overflow-scrolling: touch;
-                                            border-radius: 48px;
-                                            position: relative;
-                                        }
-                                        @media (max-width: 900px) {
-                                            .device-frame {
-                                                width: 100vw;
-                                                height: 100vh;
-                                                border-radius: 0;
-                                                border-width: 0;
-                                            }
-                                            .device-screen {
-                                                border-radius: 0;
-                                            }
-                                        }
-                                    </style>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Trending Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">🔥 ट्रेन्डिङ</h3>
+                    <div class="trending-list">
+                        <div class="trending-item">
+                            <div class="trending-number">1</div>
+                            <div class="trending-text">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-number">2</div>
+                            <div class="trending-text">एनकेएल ड्राफ्टमा विभागीय टिमका ३५ खेलाडी</div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-number">3</div>
                             <div class="trending-text">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</div>
                         </div>
                         <div class="trending-item">
@@ -1396,12 +1217,31 @@
     </div>
 
     <!-- Footer -->
-    <!-- Footer -->
     <footer>
-        ...existing code...
-    </footer>
-      </div>
-    </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>खेलपाटी बारे</h3>
+                <p>नेपालको अग्रणी खेलकुद समाचार पोर्टल। हामी नेपाली खेलकुद जगतका सबै ताजा समाचार, विश्लेषण र जानकारी प्रदान गर्दछौं।</p>
+            </div>
+            <div class="footer-section">
+                <h3>महत्त्वपूर्ण लिंक</h3>
+                <ul class="footer-links">
+                    <li><a href="/about">हाम्रो बारे</a></li>
+                    <li><a href="/team">हाम्रो टीम</a></li>
+                    <li><a href="/contact">सम्पर्क</a></li>
+                    <li><a href="/advertise">विज्ञापन</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>खेलकुद श्रेणी</h3>
+                <ul class="footer-links">
+                    <li><a href="/football">फुटबल</a></li>
+                    <li><a href="/cricket">क्रिकेट</a></li>
+                    <li><a href="/volleyball">भलिबल</a></li>
+                    <li><a href="/athletics">एथलेटिक्स</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
                 <h3>सम्पर्क</h3>
                 <ul class="footer-links">
                     <li><a href="tel:9851085203">९८५१०८५२०३</a></li>
