@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>खेलपाटी Mobile - नेपालको खेल पत्रिका</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --brand-red: #DC2626;
+            --deep-blue: #1E3A8A;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --bg-primary: #FFFFFF;
+            --bg-light: #F3F4F6;
+            --football: #EF4444;
+            --cricket: #10B981;
+            --volleyball: #3B82F6;
+        }
+
+        body {
+            font-family: 'Mukta', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--brand-red);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--brand-red), #991B1B);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:active {
+            background: var(--bg-light);
+            transform: scale(0.95);
+        }
+
+        /* Horizontal Category Tabs */
+        .category-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab {
+            flex-shrink: 0;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid #E5E7EB;
+            background: var(--bg-primary);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: var(--brand-red);
+            border-color: var(--brand-red);
+            color: white;
+        }
+
+        /* Breaking News Banner */
+        .breaking-news {
+            background: var(--brand-red);
+            color: white;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .live-badge {
+            background: rgba(255,255,255,0.3);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 140px;
+            padding: 0 16px 24px;
+        }
+
+        /* Hero Card */
+        .hero-card {
+            position: relative;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 24px;
+            color: white;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .badge-football { background: var(--football); }
+        .badge-cricket { background: var(--cricket); }
+        .badge-volleyball { background: var(--volleyball); }
+
+        .hero-title {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .hero-meta {
+            font-size: 12px;
+            opacity: 0.9;
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--brand-red);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .card-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Horizontal Story Scroll */
+        .story-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .story-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .small-card {
+            flex: 0 0 280px;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .small-card-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .small-card-content {
+            padding: 12px;
+        }
+
+        .small-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        /* Native Ad */
+        .native-ad {
+            background: #FFFBEB;
+            border: 1px solid #FCD34D;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .sponsored-label {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Video Cards */
+        .video-card {
+            position: relative;
+            flex: 0 0 240px;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 135px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(220, 38, 38, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .video-title {
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border-top: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0 8px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 22px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            min-width: 60px;
+            transition: all 0.2s;
+        }
+
+        .nav-item.active {
+            color: var(--brand-red);
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Pull to Refresh Indicator */
+        .pull-refresh {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s ease-in-out infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="header-top">
+            <a href="/" class="logo">
+                <div class="logo-icon">ख</div>
+                <span>खेलपाटी</span>
+            </a>
+            <div class="header-actions">
+                <button class="icon-btn">🔍</button>
+                <button class="icon-btn">☰</button>
+            </div>
+        </div>
+        <div class="category-tabs">
+            <div class="tab active">गृह पृष्ठ</div>
+            <div class="tab">फुटबल</div>
+            <div class="tab">क्रिकेट</div>
+            <div class="tab">भलिबल</div>
+            <div class="tab">बास्केटबल</div>
+            <div class="tab">थप</div>
+        </div>
+    </header>
+
+    <!-- Breaking News -->
+    <div class="breaking-news">
+        <span class="live-badge">🔴 LIVE</span>
+        <div style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै • ३० मिनेटमा खेल सुरु
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Story -->
+        <div class="hero-card fade-in">
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=400&fit=crop" alt="Hero" class="hero-image">
+            <div class="hero-overlay">
+                <span class="badge badge-football">फुटबल</span>
+                <h2 class="hero-title">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</h2>
+                <div class="hero-meta">
+                    <span>👤 राजु घिसिङ</span>
+                    <span>🕐 २ घण्टा अगाडि</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Stories Section -->
+        <div class="section-header">
+            <h3 class="section-title">🔥 मुख्य समाचार</h3>
+            <a href="#" class="view-all">सबै →</a>
+        </div>
+
+        <div class="story-scroll">
+            <div class="small-card">
+                <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
+                <div class="small-card-content">
+                    <span class="badge badge-cricket">क्रिकेट</span>
+                    <div class="small-card-title">पराग अब राजस्थानको कप्तान</div>
+                    <div class="card-meta">🕐 ३ घण्टा अगाडि</div>
+                </div>
+            </div>
+            <div class="small-card">
+                <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
+                <div class="small-card-content">
+                    <span class="badge badge-volleyball">भलिबल</span>
+                    <div class="small-card-title">काभा वुमन्स लिगमा तेस्रो भयो पुलिस</div>
+                    <div class="card-meta">🕐 ५ घण्टा अगाडि</div>
+                </div>
+            </div>
+            <div class="small-card">
+                <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=300&h=200&fit=crop" alt="Story" class="small-card-image">
+                <div class="small-card-content">
+                    <span class="badge badge-football">फुटबल</span>
+                    <div class="small-card-title">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</div>
+                    <div class="card-meta">🕐 ६ घण्टा अगाडि</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest News Section -->
+        <div class="section-header">
+            <h3 class="section-title">📰 ताजा समाचार</h3>
+        </div>
+
+        <div class="news-card fade-in">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=300&fit=crop" alt="News" class="card-image">
+            <div class="card-content">
+                <span class="badge badge-football">फुटबल</span>
+                <h3 class="card-title">एनआरटीले गाईघाट एफसीलाई हरायो</h3>
+                <div class="card-meta">
+                    <span>👤 हिम बिक्रम केसी</span>
+                    <span>🕐 ८ घण्टा अगाडि</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-card fade-in">
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&h=300&fit=crop" alt="News" class="card-image">
+            <div class="card-content">
+                <span class="badge badge-football">फुटबल</span>
+                <h3 class="card-title">केबेको ह्याट्रिक, प्लानिङले फ्रेन्ड्सलाई हरायो</h3>
+                <div class="card-meta">
+                    <span>👤 उज्वल तिमल्सिना</span>
+                    <span>🕐 १० घण्टा अगाडि</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Native Ad -->
+        <div class="native-ad fade-in">
+            <span class="sponsored-label">प्रायोजित</span>
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop" alt="Ad" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">एक्सट्रिम एनर्जी - खेलाडीहरूको पहिलो रोजाई</h3>
+                <div class="card-meta">
+                    <span>नेपालको नं.१ स्पोर्ट्स ड्रिंक</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="news-card fade-in">
+            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=300&fit=crop" alt="News" class="card-image">
+            <div class="card-content">
+                <span class="badge badge-cricket">क्रिकेट</span>
+                <h3 class="card-title">नेपाललाई पहिलो खेलमै पराजित</h3>
+                <div class="card-meta">
+                    <span>👤 निशान राई</span>
+                    <span>🕐 १२ घण्टा अगाडि</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="section-header">
+            <h3 class="section-title">🎥 भिडियो</h3>
+            <a href="#" class="view-all">सबै →</a>
+        </div>
+
+        <div class="story-scroll">
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="play-icon">▶</div>
+                    <div class="video-duration">3:45</div>
+                </div>
+                <div class="video-title">मछिन्द्र vs आर्मी हाईलाइट्स</div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="play-icon">▶</div>
+                    <div class="video-duration">5:12</div>
+                </div>
+                <div class="video-title">कुशल भुर्तेल अन्तर्वार्ता</div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=300&h=200&fit=crop" alt="Video" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="play-icon">▶</div>
+                    <div class="video-duration">2:30</div>
+                </div>
+                <div class="video-title">नेपाल महिला टिमको तयारी</div>
+            </div>
+        </div>
+
+        <div class="news-card fade-in">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=600&h=300&fit=crop" alt="News" class="card-image">
+            <div class="card-content">
+                <span class="badge badge-football">फुटबल</span>
+                <h3 class="card-title">झापा ११ लाई हराउँदै एपीएफ फाइनलमा</h3>
+                <div class="card-meta">
+                    <span>👤 लक्षमण केसी</span>
+                    <span>🕐 १४ घण्टा अगाडि</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="/" class="nav-item active">
+            <div>🏠</div>
+            <span class="nav-label">गृह पृष्ठ</span>
+        </a>
+        <a href="/football" class="nav-item">
+            <div>⚽</div>
+            <span class="nav-label">फुटबल</span>
+        </a>
+        <a href="/cricket" class="nav-item">
+            <div>🏏</div>
+            <span class="nav-label">क्रिकेट</span>
+        </a>
+        <a href="/videos" class="nav-item">
+            <div>🎥</div>
+            <span class="nav-label">भिडियो</span>
+        </a>
+        <a href="/more" class="nav-item">
+            <div>☰</div>
+            <span class="nav-label">थप</span>
+        </a>
+    </nav>
+
+    <script>
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Bottom nav active state
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                navItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll for horizontal scrolls
+        const scrollContainers = document.querySelectorAll('.story-scroll, .category-tabs');
+        scrollContainers.forEach(container => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            container.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            });
+
+            container.addEventListener('touchend', () => {
+                isDown = false;
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.touches[0].pageX - container.offsetLeft;
+                const walk = (x - startX) * 2;
+                container.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.news-card, .native-ad').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै - खेलपाटी</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-red: #DC2626;
+            --deep-blue: #1E3A8A;
+            --text-primary: #374151;
+            --text-secondary: #6B7280;
+            --border-color: #E5E7EB;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --bg-light: #F3F4F6;
+            --football-color: #EF4444;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Mukta', 'Manrope', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            line-height: 1.7;
+        }
+
+        /* Header (Minimal for Article Page) */
+        header {
+            background: var(--bg-primary);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand-red);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--brand-red), #991B1B);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .header-link:hover {
+            color: var(--brand-red);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--brand-red);
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--brand-red);
+        }
+
+        /* Article Container */
+        article {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px 64px;
+            display: grid;
+            grid-template-columns: 80px 1fr 300px;
+            gap: 48px;
+        }
+
+        /* Share Sidebar (Left) */
+        .share-sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .share-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+
+        .share-btn:hover {
+            border-color: var(--brand-red);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .share-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Main Content */
+        .article-content {
+            max-width: 700px;
+            background: var(--bg-primary);
+            padding: 48px 64px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            background: var(--football-color);
+            color: white;
+        }
+
+        .article-title {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1F2937;
+        }
+
+        .article-byline {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+            border-bottom: 2px solid var(--bg-light);
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-red), var(--deep-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .byline-details {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .hero-image-container {
+            margin: 0 -64px 48px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .image-caption {
+            padding: 16px 64px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Article Body Typography */
+        .article-body {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-primary);
+        }
+
+        .article-body p {
+            margin-bottom: 24px;
+        }
+
+        .article-body h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 48px 0 24px;
+            color: #1F2937;
+        }
+
+        .article-body h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: #1F2937;
+        }
+
+        .article-body strong {
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .article-body a {
+            color: var(--brand-red);
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+
+        .article-body a:hover {
+            opacity: 0.8;
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            margin: 48px 0;
+            padding-left: 32px;
+            border-left: 4px solid var(--brand-red);
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.6;
+            color: #1F2937;
+            background: var(--bg-secondary);
+            padding: 32px;
+            border-radius: 12px;
+        }
+
+        /* Quick Fact Box */
+        .fact-box {
+            background: #FFFBEB;
+            border: 2px solid #FCD34D;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+
+        .fact-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #92400E;
+            margin-bottom: 12px;
+        }
+
+        .fact-content {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #78350F;
+        }
+
+        /* In-Article Image */
+        .article-image {
+            margin: 48px -64px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* In-Article Ad */
+        .in-article-ad {
+            margin: 48px 0;
+            padding: 32px;
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .ad-label {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #92400E;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .ad-content {
+            font-size: 16px;
+            color: #78350F;
+            margin-top: 16px;
+        }
+
+        /* Author Bio */
+        .author-bio {
+            margin-top: 64px;
+            padding: 32px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .bio-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-red), var(--deep-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .bio-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #1F2937;
+        }
+
+        .bio-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .bio-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Related Stories */
+        .related-stories {
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 2px solid var(--bg-light);
+        }
+
+        .related-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #1F2937;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .related-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .related-content {
+            padding: 16px;
+        }
+
+        .related-headline {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: #1F2937;
+        }
+
+        .related-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar (Right) */
+        .article-sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1F2937;
+        }
+
+        .trending-list {
+            list-style: none;
+        }
+
+        .trending-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--bg-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .trending-item:last-child {
+            border-bottom: none;
+        }
+
+        .trending-item:hover {
+            transform: translateX(4px);
+        }
+
+        .trending-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: var(--brand-red);
+            color: white;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-right: 12px;
+        }
+
+        .trending-text {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        /* Sidebar Ad */
+        .sidebar-ad {
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .sidebar-ad-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #92400E;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 56px;
+            height: 56px;
+            background: var(--brand-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            article {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .share-sidebar {
+                display: none;
+            }
+
+            .article-sidebar {
+                display: none;
+            }
+
+            .article-content {
+                padding: 32px 24px;
+            }
+
+            .hero-image-container {
+                margin: 0 -24px 32px;
+            }
+
+            .article-image {
+                margin: 32px -24px;
+            }
+
+            .image-caption {
+                padding: 16px 24px;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+
+            .article-title {
+                font-size: 28px;
+            }
+
+            .article-body {
+                font-size: 17px;
+            }
+
+            .hero-image {
+                height: 250px;
+            }
+
+            .author-bio {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">ख</div>
+                <span>खेलपाटी</span>
+            </a>
+            <nav class="header-nav">
+                <a href="/" class="header-link">गृह पृष्ठ</a>
+                <a href="/football" class="header-link">फुटबल</a>
+                <a href="/cricket" class="header-link">क्रिकेट</a>
+                <a href="/more" class="header-link">थप</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/">गृह पृष्ठ</a>
+        <span>›</span>
+        <a href="/football">फुटबल</a>
+        <span>›</span>
+        <span>लेख</span>
+    </div>
+
+    <!-- Article -->
+    <article>
+        <!-- Share Sidebar -->
+        <aside class="share-sidebar">
+            <div>
+                <button class="share-btn" title="Like">👍</button>
+                <div class="share-count">45</div>
+            </div>
+            <div>
+                <button class="share-btn" title="Comment">💬</button>
+                <div class="share-count">12</div>
+            </div>
+            <button class="share-btn" title="Share">🔗</button>
+            <button class="share-btn" title="Bookmark">🔖</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="article-content">
+            <span class="category-badge">फुटबल</span>
+            
+            <h1 class="article-title">फाइनल पुग्न मछिन्द्र र आर्मी भिड्दै</h1>
+
+            <div class="article-byline">
+                <div class="author-avatar">र</div>
+                <div class="byline-details">
+                    <div class="author-name">राजु घिसिङ</div>
+                    <div class="article-meta">
+                        <span>प्रधान सम्पादक</span>
+                        <span>•</span>
+                        <span>🕐 २ घण्टा अगाडि</span>
+                        <span>•</span>
+                        <span>📖 ५ मिनेट पढाइ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1200&h=600&fit=crop" alt="Match Preview" class="hero-image">
+            </div>
+            <div class="image-caption">दशरथ रंगशालामा आज हुने खेलको विजेता सिधै फाइनलमा प्रवेश गर्नेछ। (फाइल तस्बिर)</div>
+
+            <div class="article-body">
+                <p>काठमाडौं। शहीद स्मारक 'ए' डिभिजन लिगको सेमिफाइनलमा आज मछिन्द्र क्लब र त्रिभुवन आर्मी क्लब भिड्दैछन्। दशरथ रंगशालामा दिउँसो १ बजे सुरु हुने यो खेलको विजेता सिधै फाइनलमा प्रवेश गर्नेछ।</p>
+
+                <p>लिग चरणमा राम्रो प्रदर्शन गरेका दुवै टिमले आज कठिन चुनौती सामना गर्नेछन्। मछिन्द्रले लिगमा १८ अंक जोडेर दोस्रो स्थानमा रहेको छ भने आर्मी १५ अंकसहित तेस्रो स्थानमा छ।</p>
+
+                <div class="fact-box">
+                    <div class="fact-title">⚡ ध्यान दिनुहोस्</div>
+                    <div class="fact-content">
+                        यो सिजन मछिन्द्र र आर्मीबीच यो तेस्रो भिडन्त हो। लिग चरणमा दुबै खेल बराबरीमा सकिएको थियो।
+                    </div>
+                </div>
+
+                <h2>मछिन्द्रको तयारी</h2>
+
+                <p>मछिन्द्र क्लबका प्रशिक्षक उमेश कुमारले आफ्नो टिमलाई राम्रोसँग तयार गरेका छन्। उनले भने, "हामीले यो खेललाई धेरै गम्भीरतापूर्वक लिएका छौं। सबै खेलाडी फिट छन् र जित्नको लागि तयार छन्।"</p>
+
+                <p><strong>मछिन्द्रका मुख्य खेलाडीहरू:</strong> पिटर सेगाफ्रेडो, बिकेश कुथु र किरण चेम्जोङले यस सिजन राम्रो फर्ममा छन्। विशेषगरी सेगाफ्रेडोले अहिलेसम्म ८ गोल गरेका छन्।</p>
+
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=600&fit=crop" alt="Training Session">
+                </div>
+                <div class="image-caption">मछिन्द्र क्लबको प्रशिक्षण सत्र। (फाइल तस्बिर)</div>
+
+                <h2>आर्मीको रणनीति</h2>
+
+                <p>त्रिभुवन आर्मी क्लबका मुख्य प्रशिक्षक नवयुग श्रेष्ठले भने, "मछिन्द्र बलियो टिम हो तर हामीसँग पनि राम्रो खेलाडीहरू छन्। हामी जित्नको लागि सबै कुरा गर्नेछौं।"</p>
+
+                <div class="pull-quote">
+                    "यो सिजनको सबैभन्दा महत्वपूर्ण खेल हो। हामी फाइनलमा पुग्न चाहन्छौं र त्यसको लागि सबै कुरा दिनेछौं।"
+                </div>
+
+                <p>आर्मीका कप्तान भरत खवासले टिमको मनोबल उच्च रहेको बताएका छन्। उनले भने, "हामी सबै एकजुट छौं। मछिन्द्र बलियो टिम हो तर हामी पनि कमजोर छैनौं।"</p>
+
+                <h3>हेड-टु-हेड रेकर्ड</h3>
+
+                <p>यो सिजन दुवै टिमबीचको पहिलो खेल १-१ को बराबरीमा सकिएको थियो। दोस्रो खेल २-२ को बराबरीमा सकिएको थियो। यसअघिको तीन सिजनमा मछिन्द्रले ४ खेल जितेको छ भने आर्मीले ३ खेल जितेको छ। २ खेल बराबरीमा सकिएको थियो।</p>
+
+                <!-- In-Article Ad -->
+                <div class="in-article-ad">
+                    <div class="ad-label">प्रायोजित</div>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=200&fit=crop" alt="Advertisement" style="width: 100%; height: auto; border-radius: 8px;">
+                    <div class="ad-content">
+                        <strong>एक्सट्रिम एनर्जी</strong> - खेलाडीहरूको पहिलो रोजाई
+                    </div>
+                </div>
+
+                <h2>प्रमुख खेलाडीहरू</h2>
+
+                <p>यो खेलमा केही प्रमुख खेलाडीहरूको प्रदर्शन निर्णायक हुनसक्छ। मछिन्द्रका सेगाफ्रेडो र बिकेश कुथु तथा आर्मीका अजय चौधरी र निर्मल मगरले राम्रो फर्ममा छन्।</p>
+
+                <p>विशेषज्ञहरूले यो खेल धेरै प्रतिस्पर्धात्मक हुने अनुमान गरेका छन्। दुबै टिमको रक्षा र आक्रमण दुवै बलियो छ। गोलकिपरहरूको भूमिका पनि महत्वपूर्ण हुनेछ।</p>
+
+                <h3>हेर्नुपर्ने कुराहरू</h3>
+
+                <p>यो खेलमा केही महत्वपूर्ण कुराहरूमा ध्यान दिनुपर्छ:</p>
+
+                <p>• मछिन्द्रको आक्रमण विरुद्ध आर्मीको रक्षा<br>
+                • आर्मीको मिडफिल्ड नियन्त्रण<br>
+                • मछिन्द्रको होम एडभान्टेज<br>
+                • दुवै टिमको फिटनेस स्तर</p>
+
+                <h2>निष्कर्ष</h2>
+
+                <p>यो खेल नेपाली फुटबलका दुई बलियो टिमबीचको महत्वपूर्ण भिडन्त हुनेछ। फाइनल प्रवेशका लागि दुवै टिम आफ्नो उत्कृष्ट प्रदर्शन गर्नेछन्। दर्शकहरूले रोमाञ्चक खेल हेर्न पाउने अपेक्षा गर्न सकिन्छ।</p>
+
+                <p>खेल आज दिउँसो १ बजे दशरथ रंगशालामा सुरु हुनेछ। नेपाल टेलिभिजनले यो खेल प्रत्यक्ष प्रसारण गर्नेछ।</p>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="author-bio">
+                <div class="bio-avatar">र</div>
+                <div class="bio-content">
+                    <h3>राजु घिसिङ</h3>
+                    <div class="bio-title">प्रधान सम्पादक</div>
+                    <p class="bio-text">राजु घिसिङ खेलपाटीका प्रधान सम्पादक हुन्। उनले १५ वर्षदेखि नेपाली खेलकुदको क्षेत्रमा पत्रकारिता गरिरहेका छन्। विशेषगरी फुटबल र क्रिकेटमा उनको गहिरो ज्ञान छ।</p>
+                </div>
+            </div>
+
+            <!-- Related Stories -->
+            <section class="related-stories">
+                <h2 class="related-title">तपाईंलाई रुचि लाग्न सक्छ</h2>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&h=250&fit=crop" alt="Related" class="related-image">
+                        <div class="related-content">
+                            <span class="category-badge">फुटबल</span>
+                            <h3 class="related-headline">पेड्रोको ह्याट्रिकमा चेल्सीको सहज जित</h3>
+                            <div class="related-meta">🕐 ६ घण्टा अगाडि</div>
+                        </div>
+                    </div>
+                    <div class="related-card">
+                        <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=400&h=250&fit=crop" alt="Related" class="related-image">
+                        <div class="related-content">
+                            <span class="category-badge">फुटबल</span>
+                            <h3 class="related-headline">केबेको ह्याट्रिक, प्लानिङले फ्रेन्ड्सलाई हरायो</h3>
+                            <div class="related-meta">🕐 १० घण्टा अगाडि</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">🔥 ट्रेन्डिङ</h3>
+                <ul class="trending-list">
+                    <li class="trending-item">
+                        <span class="trending-number">1</span>
+                        <span class="trending-text">पराग अब राजस्थानको कप्तान</span>
+                    </li>
+                    <li class="trending-item">
+                        <span class="trending-number">2</span>
+                        <span class="trending-text">नेपाललाई पहिलो खेलमै पराजित</span>
+                    </li>
+                    <li class="trending-item">
+                        <span class="trending-number">3</span>
+                        <span class="trending-text">झापा ११ लाई हराउँदै एपीएफ फाइनलमा</span>
+                    </li>
+                    <li class="trending-item">
+                        <span class="trending-number">4</span>
+                        <span class="trending-text">काभा वुमन्स लिगमा तेस्रो भयो पुलिस</span>
+                    </li>
+                    <li class="trending-item">
+                        <span class="trending-number">5</span>
+                        <span class="trending-text">हुर्रालाई हराउँदै पुलिस सेमिफाइनलमा</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-ad">
+                <div class="sidebar-ad-label">प्रायोजित</div>
+                <img src="https://images.unsplash.com/photo-1517164850305-99a3e65bb47e?w=300&h=400&fit=crop" alt="Ad" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 16px;">
+                <div style="font-size: 14px; font-weight: 600; color: #78350F;">
+                    Bhat Bhateni Supermarket<br>
+                    खेलकुदको साथी
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">📰 ताजा समाचार</h3>
+                <ul class="trending-list">
+                    <li class="trending-item">
+                        <span class="trending-text">एनकेएल ड्राफ्टमा विभागीय टिमका ३५ खेलाडी</span>
+                        <div style="font-size: 12px; color: #9CA3AF; margin-top: 4px;">🕐 १ घण्टा अगाडि</div>
+                    </li>
+                    <li class="trending-item">
+                        <span class="trending-text">राष्ट्रिय हक्की प्रतियोगिता सोमबारदेखि</span>
+                        <div style="font-size: 12px; color: #9CA3AF; margin-top: 4px;">🕐 ३ घण्टा अगाडि</div>
+                    </li>
+                    <li class="trending-item">
+                        <span class="trending-text">'सी' डिभिजनका ९ वटा क्लबले पाए मताधिकार</span>
+                        <div style="font-size: 12px; color: #9CA3AF; margin-top: 4px;">🕐 ५ घण्टा अगाडि</div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </article>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+
+            // Scroll to Top Button
+            const scrollTop = document.getElementById('scrollTop');
+            if (winScroll > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to Top Function
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Share Buttons
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const title = this.getAttribute('title');
+                alert(title + ' functionality would be implemented here');
+            });
+        });
+    </script>
+</body>
+</html>
