@@ -852,9 +852,73 @@
         .loading {
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
+
+        /* Pages Menu */
+        .pages-menu {
+            background: #0F172A;
+            border-bottom: 2px solid #DC2626;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .pages-menu-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .pages-menu-label {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-right: 16px;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .pages-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            font-size: 13px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .pages-menu a:hover {
+            background: #DC2626;
+            color: white;
+        }
+
+        .pages-menu a.active {
+            background: #DC2626;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
+    <!-- Pages Navigation Menu -->
+    <nav class="pages-menu">
+        <div class="pages-menu-container">
+            <span class="pages-menu-label">📄 Pages:</span>
+            <a href="index.html">Home</a>
+            <a href="khelpati-redesign.html">Redesign</a>
+            <a href="khelpati-article.html">Article</a>
+            <a href="khelpati-homepage.html" class="active">Homepage</a>
+            <a href="khelpati-homepage-final.html">Homepage Final</a>
+            <a href="khelpati-mobile.html">Mobile</a>
+            <a href="khelpati-design-system.html">Design System</a>
+        </div>
+    </nav>
+
     <!-- Header -->
     <header>
         <div class="header-top">
